@@ -12,8 +12,7 @@ You can do this by setting the array of EditorBuildSettingsScenes called EditorB
 You can create a new EditorBuildSettingsScene like this:
 
 ```
-EditorBuildSettingsScene scene = new
-EditorBuildSettingsScene(path,true);
+EditorBuildSettingsScene scene = new EditorBuildSettingsScene(path,true);
 ```
 
 where path is the file path to the scene name, and you can get the path of a file by calling file.fullName.
@@ -44,7 +43,7 @@ public class OnBuild : object {
         FileInfo[] files = info.GetFiles();
         files.OrderBy(f => f.Name);
 >
-        HashSet<string\> paths = new HashSet<string\>();
+        HashSet<string> paths = new HashSet<string>();
 >
         foreach (EditorBuildSettingsScene scene in EditorBuildSettings.scenes) {
           string path = scene.path;

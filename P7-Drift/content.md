@@ -27,10 +27,10 @@ Resources is a special folder in Unity that allows us to read files from it duri
 >Now add a file to it named levels.xml using the text editor of your choice and add the following to it:
 >
 ```
-<levels\>
-  <level\>Level1</level\>
-  <level\>Level2</level\>
-</levels\>
+<levels>
+  <level>Level1</level>
+  <level>Level2</level>
+</levels>
 ```
 
 This XML includes levels 1 and 2; we’ve intentionally left out level 3 so that you can see a change from the previous version (the hard-coded list).
@@ -92,7 +92,9 @@ Editor is also a special Unity folder in Unity and one that you can have multipl
 <!-- -->
 
 >[solution]
+>
 >Your code should look like this:
+>
 ```
 using UnityEditor;
 using UnityEngine;
@@ -165,7 +167,7 @@ foreach (FileInfo file in files) {
     rootNode.AppendChild(levelNode);
   }
 }
-
+>
 xmlDoc.Save("Assets/Resources/levels.xml");
 ```
 
@@ -173,7 +175,8 @@ This code grabs all the files in Levels, sorts them by name, then adds all the o
 
 Since the levels are sorted by name, by the way, if we want to reorder them, we just need to prepend some number to the file name, like 00\_Level2, 01\_Level1, or something like that. Note that our implementation also allows renaming in a super-simple way, since the XML file just gets rewritten.
 
-In order for this code to work, we’ll need to move all our levels into a folder named Levels, so do that.
+>[action]
+>In order for this code to work, we’ll need to move all our levels into a folder named Levels, so do that.
 
 ![](../media/image117.png)
 

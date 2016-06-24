@@ -18,7 +18,7 @@ Great. Now, we want to create a system that tracks our current level and then lo
 To do this, we’ll need some test levels. The quickest way to do this is to save copies of your Play scene.
 
 >[action]
->Save one as Level1, one as Level2, and one as Level3. As a shortcut, you can copy Level1 to a scene called Level2 by simply pressing Ctrl-D.
+>Save one as Level1, one as Level2, and one as Level3. As a shortcut, you can copy Level1 to a scene called Level2 by simply selecting Level1 and pressing Ctrl-D.
 
 ![](../media/image32.png)
 
@@ -53,6 +53,9 @@ This will work, and it would be totally sufficient for a game jam, but the proce
 What would be much better would be to have some manager class keep track of our current level and then give us the next one. If there is no next one, we should go to the main menu.
 
 In Unity, however, Game Objects, by default, don’t persist between Scenes, so if you want something like level number to persist, you’ll need to store it in a different way.
+
+>[info]
+>There is a way to mark objects in Unity to not be destroyed on scene transitions, but we won't be using that for our solution.
 
 One convenient way of doing this is by creating some other manager class that your components can access to keep track of the level number. We’re going to show you how to create a singleton level manager that your Player component can call upon to get the next level name. A singleton is a type of class that can only ever be instantiated once, and then every time you use it, you really refer to the same exact instance of it!
 
@@ -103,6 +106,8 @@ A convenient way to do this is to store an array of all our level names, store a
 
 >[action]
 >Try it out.
+
+<!-- -->
 
 >[solution]
 >

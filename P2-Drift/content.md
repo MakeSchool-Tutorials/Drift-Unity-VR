@@ -6,7 +6,7 @@ slug: adding-the-goal
 Our game loop is nearly complete; we just need a goal for our player to reach!
 
 >[action]
->Before we add the goal, let’s make our level look a little more the way we want it. For our first level, we can just make a channel for your player to go down. If you build it out of Planes, you’ll be able to see through from the back, which will be helpful when you want to add more elements to your levels later.
+>Before we add the goal, let’s make our level look a little more the way we want it. For our first level, we can just make a channel for our player to go down. If you build it out of Planes, you’ll be able to see through from the back, which will be helpful when you want to add more elements to your levels later.
 
 ![](../media/image137.png)
 
@@ -34,6 +34,8 @@ It’s a little difficult to see clearly now, so we’ve added a few more Direct
 
 >[action]
 >Create the Goal.
+
+<!-- -->
 
 >[solution]
 >

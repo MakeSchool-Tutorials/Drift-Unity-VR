@@ -41,6 +41,8 @@ public class TimeController : MonoBehaviour {
 }
 ```
 
+<!-- -->
+
 >[action]
 >Now create an Empty Game Object named TimeController and add the TimeController component to it. This should add and set a SteamVR\_TrackedController component, as expected.
 
@@ -110,9 +112,7 @@ public class TimeController : MonoBehaviour {
   void Update () {
 >
     float dTimeScale = timeScaleRate * Time.unscaledDeltaTime;
->
     if (controller.gripped) { dTimeScale *= -1; }
->
     Time.timeScale = Mathf.Clamp01(Time.timeScale + dTimeScale);
   }
 }

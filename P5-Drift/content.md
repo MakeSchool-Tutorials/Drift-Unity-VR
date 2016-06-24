@@ -91,8 +91,10 @@ SceneManager.LoadScene("Main");
 return;
 ```
 
+Now you have a feature-complete one-level game!
+
 >[action]
->Now you have a feature-complete one-level game! Go ahead and make it more interesting than just a hallway by changing the path and/or adding some obstacles.
+>Go ahead and make it more interesting than just a hallway by changing the path and/or adding some obstacles.
 
 ![](../media/image79.gif)
 

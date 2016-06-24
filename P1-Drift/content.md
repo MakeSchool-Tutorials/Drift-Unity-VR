@@ -8,7 +8,7 @@ slug: creating-the-player
 
 ![](../media/image98.png)
 
->[action>
+>[action]
 >Create a new folder called Scenes, and save the current Scene to that folder with the name “Play.” This will be where we’ll set up our Player and Goal.
 
 ![](../media/image125.png)
@@ -46,7 +46,7 @@ If you place a Cube in the center of the room, the movement becomes even easier 
 
 We’re going to see if we can’t get rid of the translation.
 
-To do this, we’ll want to look a little more carefully at our components to see which one makes the head move. A little digging uncovers that translation is caused by the SteamVR\_TrackedObject component on Main Camera (head).
+To do this, we’ll want to look a little more carefully at our components to see which one makes the head move. A little digging uncovers that translational tracking is caused by the SteamVR\_TrackedObject component on Main Camera (head).
 
 ![](../media/image90.png)
 
@@ -54,10 +54,8 @@ To do this, we’ll want to look a little more carefully at our components to se
 
 Unfortunately, this component doesn’t provide a way for us to turn off or on motion tracking by default... Fortunately, the code is open source!
 
-Can you think of a way to modify the SteamVR\_TrackedObject component in the least destructive way?
-
 >[action]
->Modify the SteamVR\_TrackedObject component so that we can the head doesn't translate.
+>Can you think of a way to modify the SteamVR\_TrackedObject component in the least destructive way so that our head no longer tracks translation?
 
 <!-- -->
 
@@ -75,11 +73,11 @@ Then we modified modify both parts of the code that set translation (originally 
 if (!doesNotApplyTranslation) {transform.localPosition = pose.pos;}
 ```
 >
-![](../media/image30.png)
->
 Then we checked the new box that appeared for this field in the Editor.
 >
 ![](../media/image04.png)
+
+<!-- -->
 
 >[action]
 >Now run the Scene and try translating around in the space. Viola! No more translation!
@@ -102,20 +100,20 @@ Now that we have the head rotation-only tracked, it’s time to make the Player 
 >Open Player in Visual Studios and, above the class declaration itself,add the following:
 >
 ```
-[RequireComponent(typeof(Rigidbody))\]
+[RequireComponent(typeof(Rigidbody))]
 ```
 >
 Add a Reset method with the following definition:
 >
-> void Reset() {
->
-> Rigidbody rb = GetComponent&lt;Rigidbody&gt;();
->
-> rb.useGravity = false;
->
-> rb.freezeRotation = true;
->
-> }
+```
+void Reset() {
+  Rigidbody rb = GetComponent<Rigidbody>();
+  rb.useGravity = false;
+  rb.freezeRotation = true;
+}
+```
+
+<!-- -->
 
 >[action]
 >Now save your component and add it to Player by dragging it from the Project panel to Player in the hierarchy.
@@ -126,7 +124,10 @@ When you do… Viola! Player magically *also* gets a Rigidbody component with us
 
 “RequireComponent” is an example of a Unity-specific C\# Attribute: a directive you can apply to a class, function, or variable. RequireComponent causes an additional component to be added to a Game Object *right before* this component is added. Reset is function that gets called *in Edit Mode* whenever a component is added to a Game Object for the first time. Since the automatically added component gets added before this component, we can reference it in our Reset method. Pretty cool, huh?
 
-RequireComponent also prevents you from removing a required component. Try removing the Rigidbody component from your Player by clicking the little gear icon at the top-right of the component and selecting “Remove Component.” Unity won’t let you as long as the component that requires it is there!
+RequireComponent also prevents you from removing a required component.
+
+>[action]
+>Try removing the Rigidbody component from your Player. Unity won’t let you as long as the component that requires it is there!
 
 ![](../media/image24.png)
 
@@ -148,12 +149,13 @@ want to be a bit more general, we could say:
 ```
 Rigidbody rb = GetComponent<Rigidbody>();
 Vector3 direction = new Vector3(1,0,0);
-rb.velocity = direction \* movementSpeed;
+rb.velocity = direction * movementSpeed;
 ```
 
 Now all that’s left to do is find the direction. Conveniently, any Transform’s forward direction can be obtained using the .forward property!
 
-With that knowledge, try making the player move forward with a constant velocity.
+>[action]
+>With that knowledge, try making the player move forward with a constant velocity.
 
 ![](../media/image27.gif)
 
@@ -212,6 +214,8 @@ to go straight through the Cube -- and that’s no good!
 
 >[action]
 >How can you fix that?
+
+<!-- -->
 
 >[solution]
 >
