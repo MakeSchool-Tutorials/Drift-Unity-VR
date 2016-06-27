@@ -71,8 +71,7 @@ public class OnBuild : object {
 >
         xmlDoc.Save("Assets/Resources/levels.xml");
 >
-        EditorBuildSettingsScene\[\] scenesNew = new
-        EditorBuildSettingsScene\[paths.Count\];
+        EditorBuildSettingsScene[] scenesNew = new EditorBuildSettingsScene[paths.Count];
 >
         int i = 0;
         foreach (string path in paths) {
