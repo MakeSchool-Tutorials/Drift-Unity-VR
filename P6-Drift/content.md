@@ -131,7 +131,7 @@ public class LevelManager : object {
   }
 >
   public string GetCurrentLevelName() {
-    if (currentLevelIndex < 0 || currentLevelIndex <= levelNames.Length) { return "Main"; }
+    if (currentLevelIndex < 0 || currentLevelIndex >= levelNames.Length) { return "Main"; }
     return levelNames[currentLevelIndex];
   }
 >
