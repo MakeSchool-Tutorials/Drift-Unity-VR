@@ -11,7 +11,7 @@ So that we don’t need to rebuild our Player, Goal, or TimeController, let’s 
 
 >[action]Create a new folder called Prefabs if you don’t already have one, then turn your Player, Goal, and TimeController into Prefabs.
 
-![](../media/image119.png)
+![Prefabs are in the Prefabs folder](../media/image119.png)
 
 Great. Now, we want to create a system that tracks our current level and then loads the next one.
 
@@ -20,11 +20,11 @@ To do this, we’ll need some test levels. The quickest way to do this is to sav
 >[action]
 >Save one as Level1, one as Level2, and one as Level3. As a shortcut, you can copy Level1 to a scene called Level2 by simply selecting Level1 and pressing Ctrl-D.
 
-![](../media/image32.png)
+![Levels are saved as new scenes](../media/image32.png)
 
 To help distinguish Scenes, we suggest changing the Ambient Color in the scenes, and to make it easier to beat each level, we suggest putting the Goal right in front of the Player and/or disabling obstacles.
 
-![](../media/image122.png)
+![We changed Ambient color to distinguish scenes](../media/image122.png)
 
 Be sure to add your new levels to the Build Settings!
 
@@ -62,7 +62,7 @@ One convenient way of doing this is by creating some other manager class that yo
 >[action]
 >Create a new folder called Classes, and, in that folder, create a C\# script called “LevelManager” and open it in Visual Studios.
 
-![](../media/image128.png)
+![Our level manager is in our Classes folder](../media/image128.png)
 
 >[action]
 >Replace the code in LevelManager with the following:
@@ -98,7 +98,7 @@ LevelManager.SharedInstance.Foo();
 
 This should log “CALLED ONCE” just once, and then “FOO” a bunch of times.
 
-![](../media/image03.png)
+![Logs print as expected](../media/image03.png)
 
 Great. We wanted the LevelManager to keep track of the current level, be able to increment that level, and also be able to give us the current level name.
 

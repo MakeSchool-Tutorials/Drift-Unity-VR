@@ -6,51 +6,51 @@ slug: creating-the-player
 >[action]
 >Create a new 3D Project in Unity, as usual, and name it Drift.
 
-![](../media/image98.png)
+![A new 3D project](../media/image98.png)
 
 >[action]
 >Create a new folder called Scenes, and save the current Scene to that folder with the name “Play.” This will be where we’ll set up our Player and Goal.
 
-![](../media/image125.png)
+![The Play scene in the Project Panel](../media/image125.png)
 
 >[action]
 >Open up the Asset Store and import the SteamVR Plugin.
 
-![](../media/image18.png)
+![Import SteamVR from the Asset Store](../media/image18.png)
 
 >[action]
 >Create an Empty Game Object named Player, and drag the Main Camera under it as a child, positioning the Main Camera at (0,0,0) relative to its parent.
 
-![](../media/image93.png)
+![Create the Player](../media/image93.png)
 
 >[action]
 >Add a SteamVR\_Camera component to Main Camera. A few other components should automatically get added when you do.
 
-![](../media/image109.png)
+![Adding the SteamVR_Camera component](../media/image109.png)
 
 >[action]
 >Now click the big “Expand” button on the Main Camera’s SteamVR\_Camera component. Doing so should slightly change the hierarchy of the Main Camera, nesting it under another Game Object with some other SteamVR components, and giving it a neighbor.
 
-![](../media/image133.png)
+![Click the Expand button](../media/image133.png)
 
 >[action]
 >Just to be sure everything’s working as usual, run the Scene and you should be able to look around and move around in the space as usual.
 
-![](../media/image84.gif)
+![Run the scene to test it](../media/image84.gif)
 
 For our game, however, we only want the Player to be able to look around, but not be able to walk around.
 
 If you place a Cube in the center of the room, the movement becomes even easier to see than with just the Skybox.
 
-![](../media/image47.gif)
+![Look at the effect on a cube](../media/image47.gif)
 
 We’re going to see if we can’t get rid of the translation.
 
 To do this, we’ll want to look a little more carefully at our components to see which one makes the head move. A little digging uncovers that translational tracking is caused by the SteamVR\_TrackedObject component on Main Camera (head).
 
-![](../media/image90.png)
+![The SteamVR_TrackedObject component](../media/image90.png)
 
-![](../media/image29.png)
+![The code in the SteamVR_TrackedObject component](../media/image29.png)
 
 Unfortunately, this component doesn’t provide a way for us to turn off or on motion tracking by default... Fortunately, the code is open source!
 
@@ -87,14 +87,14 @@ Then we checked the new box that appeared for this field in the Editor.
 >[info]
 >Note that the Unity Editor’s game view may still show you translating, so the best way to see this is by watching the position of Main Camera (head) with the new checkbox checked vs unchecked.
 
-![](../media/image106.gif)
+![Rotation, but no translation](../media/image106.gif)
 
 Now that we have the head rotation-only tracked, it’s time to make the Player move.
 
 >[action]
 >Create a Components folder and, in that folder, create a new component named “Player," but **don't** yet add it to Player!
 
-![](../media/image49.png)
+![The Player component](../media/image49.png)
 
 >[action]
 >Open Player in Visual Studios and, above the class declaration itself,add the following:
@@ -120,7 +120,7 @@ void Reset() {
 
 When you do… Viola! Player magically *also* gets a Rigidbody component with useGravity set to false and all the rotation Constraints set to true!
 
-![](../media/image113.png)
+![A required component was added magically!](../media/image113.png)
 
 “RequireComponent” is an example of a Unity-specific C\# Attribute: a directive you can apply to a class, function, or variable. RequireComponent causes an additional component to be added to a Game Object *right before* this component is added. Reset is function that gets called *in Edit Mode* whenever a component is added to a Game Object for the first time. Since the automatically added component gets added before this component, we can reference it in our Reset method. Pretty cool, huh?
 
@@ -129,7 +129,7 @@ RequireComponent also prevents you from removing a required component.
 >[action]
 >Try removing the Rigidbody component from your Player. Unity won’t let you as long as the component that requires it is there!
 
-![](../media/image24.png)
+![A warning appears when you try to remove a component you can't](../media/image24.png)
 
 All right; that’s a sufficient amount of awe. Let’s use that Rigidbody we’ve required to make our Player move!
 
@@ -157,7 +157,7 @@ Now all that’s left to do is find the direction. Conveniently, any Transform�
 >[action]
 >With that knowledge, try making the player move forward with a constant velocity.
 
-![](../media/image27.gif)
+![You now fly forward](../media/image27.gif)
 
 >[solution]
 >
@@ -210,7 +210,7 @@ Finally, you’ll notice that we set the velocity every frame. This is because, 
 When you implemented this, you may have noticed that the Player was able
 to go straight through the Cube -- and that’s no good!
 
-![](../media/image46.gif)
+![You sometimes clip through objects though...](../media/image46.gif)
 
 >[action]
 >How can you fix that?
@@ -222,14 +222,14 @@ to go straight through the Cube -- and that’s no good!
 >We fixed this by adding a Sphere collider to Main Camera (head). To make it more realistic, we set its radius to 0.25 and positioned it at the front of the camera, so that we’ll hit things right
 in front of our eyes, but not things that appear behind us. If we offset it too much, though, we risk allowing the player to clip through the game space by turning quickly.
 >
-![](../media/image94.png)
+![We added a collider at a spot that made sense to us](../media/image94.png)
 
 But we can do better. In Drift, when you hit a wall, you should start back at the beginning. In order to do this, we’re going to restart the scene whenever our Player hits anything.
 
 >[action]
 >Go ahead and make the current scene restart when you hit anything. As a hint, even though the Sphere Collider isn’t directly on the specific Game Object that has the Player component, we can still put the OnCollisionEnter method in Player and receive collisions from its children.
 
-![](../media/image103.gif)
+![Now the scene restarts on collision](../media/image103.gif)
 
 >[solution]
 >
@@ -253,4 +253,4 @@ You may have noticed, by the way, that the lighting changes when the level reloa
 >Rather than building lighting, set the Skybox in the Lighting Window to
 None.
 
-![](../media/image26.png)
+![You can fix the lighting in the Lighting Window](../media/image26.png)

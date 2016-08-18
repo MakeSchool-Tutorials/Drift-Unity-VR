@@ -19,7 +19,7 @@ The first step we’ll want to do is to try reading from an XML file. We’ll ne
 >[action]
 >Create a new folder called Resources.
 
-![](../media/image111.png)
+![We created a Resources folder](../media/image111.png)
 
 Resources is a special folder in Unity that allows us to read files from it during runtime using a method Resources.Load&lt;T&gt;(). We our XML file in here because we want to read it during runtime. Unity lets you have as many folders as you want called Resources, by the way, so if you ever want to load, say, both Prefabs and Materials via Resources.Load, you could add a Resources folder to your Prefabs folder and to your Materials folder, rather than being forced to change your folder structure to accommodate your loading needs.
 
@@ -70,21 +70,21 @@ The for loop at the top is responsible for reading in our XML data and putting i
 
 When you run this, you should see log messages appear after you hit the first goal. Alternatively, you could just watch to be sure you only progress through 2 levels.
 
-![](../media/image96.png)
+![Our levels log](../media/image96.png)
 
 Now that we’re sure we’re reading from our XML file, time to write it programmatically!
 
 >[action]
 >Create a new folder called Editor (or use an existing one if you have on already from importing effects like Bloom).
 
-![](../media/image88.png)
+![We created an Editor folder](../media/image88.png)
 
 Editor is also a special Unity folder in Unity and one that you can have multiple of. Unity recognizes scripts in an Editor folder as Editor scripts, which can do things in the Editor, as the name implies!
 
 >[action]
 >Create a new script in the Editor folder named OnBuild.
 
-![](../media/image110.png)
+![Editor scripts go in the Editor folder](../media/image110.png)
 
 >[action]
 >Add “using UnityEditor;” to the top. Then change the class to inherit from object rather than Monobehaviour, give the class an InitializeOnLoad attribute, and write an empty static constructor for it.
@@ -111,7 +111,7 @@ public class OnBuild : object {
 
 If you add a log statement in OnBuild, save the script, wait for it to compile, then look in the Unity Console, you should see that message appear!
 
-![](../media/image81.png)
+![The editor script logs!](../media/image81.png)
 
 >[action]Now add the following to the constructor:
 >
@@ -133,7 +133,7 @@ EditorApplication.isPlayingOrWillChangePlaymode is just what it sounds like, a b
 >[action]
 >Press the Play button, and you should see the log in the Console!
 
-![](../media/image33.png)
+![More logs happen as expected](../media/image33.png)
 
 This is great, because this means we can run whatever code we want here, for instance, the code that will write our XML.
 
@@ -178,13 +178,13 @@ Since the levels are sorted by name, by the way, if we want to reorder them, we 
 >[action]
 >In order for this code to work, we’ll need to move all our levels into a folder named Levels, so do that.
 
-![](../media/image117.png)
+![Our levels get their own special folder](../media/image117.png)
 
 Now when you press the Play button and hit the goal, you should see that all 3 levels were incorporated into the XML file! You can also see this by just looking at the XML file.
 
-![](../media/image48.png)
+![All our levels log](../media/image48.png)
 
-![](../media/image37.png)
+![Our XML file has been set up via code!](../media/image37.png)
 
 Pretty slick huh?
 

@@ -10,12 +10,12 @@ We want to change our implementation to start a Play scene with everything uniqu
 >[action]
 >To get ready for this, remove our TimeController from each of our Levels, and remove everything BUT our TimeController from our Play Scene.
 
-![](../media/image87.png)
+![We took out the time controller](../media/image87.png)
 
 >[action]
 >Now create a new Empty Game Object named LoadLevel, and attach a component to it named LoadLevel.
 
-![](../media/image95.png)
+![We added a component in charge of level loading](../media/image95.png)
 
 The LoadLevel component will be responsible for loading in the level additively, and it will want to do this in another special Unity method called Awake, that takes no arguments and is called immediately when the component is loaded.
 
@@ -52,19 +52,19 @@ public class LoadLevel : MonoBehaviour {
 
 When you do this, you may have noticed that the Hierarchy looks a little unusual.
 
-![](../media/image104.png)
+![Levels are additively loaded](../media/image104.png)
 
 It lists both Play and Level1. Play is in bold, and Level1 is not. There’s also this “DontDestroyOnLoad” thing here.
 
 If you expand Play and Level1, you’ll see the objects associated with each Scene.
 
-![](../media/image92.png)
+![You can expand the levels to see in more depth what they contain](../media/image92.png)
 
 Play being in bold means that its the active scene, meaning it’s the scene you’ll get when you call SceneManager.GetActiveScene().
 
 If Play also has an asterisk next to it, that means it has some unsaved content.
 
-![](../media/image50.png)
+![The asterisk means unsaved](../media/image50.png)
 
 You can get rid of that content by saving the scene before you run it.
 
@@ -105,13 +105,13 @@ public class LightingController : MonoBehaviour {
 >[action]
 >Turn it into a Prefab and add one to each level.
 
-![](../media/image89.png)
+![We added our ExecuteInEditMode object to each scene](../media/image89.png)
 
 >[action]
 >Then set the color on the Prefab in each Level to watch the lighting
 change in the Editor!
 
-![](../media/image112.png)
+![Setting the color sets the ambient color in the scene](../media/image112.png)
 
 >[action]
 >Now modify your code to make your Main start you at Play on Level1, and so that you go to the next Level each time you beat a level. Be sure you can use the slow-down-time feature in each Level!
@@ -150,7 +150,7 @@ void Update () {
 }
 ```
 
-![](../media/image130.gif)
+![We have a full game! Don't forget to add Bloom.](../media/image130.gif)
 
 That’s it! You’re done! Celebrate!
 

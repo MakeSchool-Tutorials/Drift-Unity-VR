@@ -46,7 +46,7 @@ public class TimeController : MonoBehaviour {
 >[action]
 >Now create an Empty Game Object named TimeController and add the TimeController component to it. This should add and set a SteamVR\_TrackedController component, as expected.
 
-![](../media/image131.png)
+![TimeController added](../media/image131.png)
 
 Now we can write code in our TimeController component to read the inputs from the SteamVR\_TrackedController to make time slow down when we squeeze the controller!
 
@@ -78,7 +78,7 @@ Fortunately, Unity provides us a metric for how much time passed each frame that
 >[action]
 >With that knowledge, make time slow down gradually when the player grips the controller, and then gradually come back to normal speed when the player un-grips.
 
-![](../media/image123.gif)
+![Our time-slow also slows our particles!](../media/image123.gif)
 
 >[solution]
 >

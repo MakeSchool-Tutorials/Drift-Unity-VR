@@ -5,7 +5,7 @@ slug: getting-started-with-draft
 
 Together, we’re going to build a game called Draft, a clone of [*Drift*](https://vrjam.devpost.com/submissions/36336-drift): a first-person VR game where you play as a bullet!
 
-![](../media/image116.gif)
+![The final project](../media/image116.gif)
 
 Some of the things you’ll learn in this tutorial include how to:
 
