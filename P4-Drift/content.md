@@ -7,12 +7,12 @@ As a final gameplay step, we want to add a slow-down time mechanic.
 
 To do this, we’ll need a reference to a SteamVR\_TrackedController in our Scene.
 
->[action]
+> [action]
 >Create a new component named TimeController, and make it require a SteamVR\_TrackedController component and set that component’s index to 1 when it’s added.
 
 <!-- -->
 
->[solution]
+> [solution]
 >
 >Our code to do this looks like this:
 >
@@ -43,7 +43,7 @@ public class TimeController : MonoBehaviour {
 
 <!-- -->
 
->[action]
+> [action]
 >Now create an Empty Game Object named TimeController and add the TimeController component to it. This should add and set a SteamVR\_TrackedController component, as expected.
 
 ![TimeController added](../media/image131.png)
@@ -75,12 +75,12 @@ Unfortunately, we cannot use Time.deltaTime as amountOfTimeThatPassedThisFrame, 
 
 Fortunately, Unity provides us a metric for how much time passed each frame that does NOT scale with Time.timeScale. That’s Time.unscaledDeltaTime.
 
->[action]
+> [action]
 >With that knowledge, make time slow down gradually when the player grips the controller, and then gradually come back to normal speed when the player un-grips.
 
 ![Our time-slow also slows our particles!](../media/image123.gif)
 
->[solution]
+> [solution]
 >
 >We’ve modified our TimeController component to look like this:
 >

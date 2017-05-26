@@ -7,12 +7,12 @@ As a final step to make the level designer’s job simpler, we’ll want to modi
 
 We want to change our implementation to start a Play scene with everything unique to Play, but not unique to each level, and then additively load the proper level, with everything unique to a particular level, into that Scene.
 
->[action]
+> [action]
 >To get ready for this, remove our TimeController from each of our Levels, and remove everything BUT our TimeController from our Play Scene.
 
 ![We took out the time controller](../media/image87.png)
 
->[action]
+> [action]
 >Now create a new Empty Game Object named LoadLevel, and attach a component to it named LoadLevel.
 
 ![We added a component in charge of level loading](../media/image95.png)
@@ -27,12 +27,12 @@ SceneManager.LoadScene(levelName, LoadSceneMode.Additive);
 
 where levelName is the name of the level we want to load.
 
->[action]
+> [action]
 >Try making Play additively load in the current level.
 
 <!-- -->
 
->[solution]
+> [solution]
 >
 >Our LoadLevel component looks like this:
 >
@@ -54,7 +54,7 @@ When you do this, you may have noticed that the Hierarchy looks a little unusual
 
 ![Levels are additively loaded](../media/image104.png)
 
-It lists both Play and Level1. Play is in bold, and Level1 is not. There’s also this “DontDestroyOnLoad” thing here.
+It lists both Play and Level1. Play is in bold, and Level1 is not. There’s also this `DontDestroyOnLoad` thing here.
 
 If you expand Play and Level1, you’ll see the objects associated with each Scene.
 
@@ -72,7 +72,7 @@ This view, by the way, comes from Unity’s Multi Scene Editing feature, which a
 
 We’re about to make each level advance to the next one when you beat the last one. Before we do though, due to a subtlety in Unity’s Render Settings being static, we’re going to add an object to our scene that sets the ambient light color when the scene is loaded.
 
->[action]
+> [action]
 >Inside one of the levels, create a new Empty Game Object named LightingController. Add a new component to it named LightingController with the following code inside:
 >
 ```
@@ -100,25 +100,25 @@ public class LightingController : MonoBehaviour {
 }
 ```
 
-"ExecuteInEditMode" is an attribute that tells a bit of code to run in the Editor.  In the Editor, the Update method only gets called any time the object that has that component changes, for example, if we change the public color variable ;)
+"ExecuteInEditMode" is an attribute that tells a bit of code to run in the Editor. In the Editor, the Update method only gets called any time the object that has that component changes, for example, if we change the public color variable ;)
 
->[action]
+> [action]
 >Turn it into a Prefab and add one to each level.
 
 ![We added our ExecuteInEditMode object to each scene](../media/image89.png)
 
->[action]
+> [action]
 >Then set the color on the Prefab in each Level to watch the lighting
 change in the Editor!
 
 ![Setting the color sets the ambient color in the scene](../media/image112.png)
 
->[action]
+> [action]
 >Now modify your code to make your Main start you at Play on Level1, and so that you go to the next Level each time you beat a level. Be sure you can use the slow-down-time feature in each Level!
 
 <!-- -->
 
->[solution]
+> [solution]
 >
 >We modified our Player’s OnCollisionEnter method to look like this:
 >

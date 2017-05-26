@@ -8,22 +8,22 @@ look like we were coursing forward, making wakes in the wind.
 
 To do this, we’re going to use a Particle System.
 
->[action]
+> [action]
 >Add a Particle System Game Object as a child of Main Camera (head).
 
 ![We added a particle system](../media/image85.png)
 
->[action]
+> [action]
 >Set its y rotation to 180 and z position to 5, so that it faces the camera. Then set it to prewarm, set its Start Lifetime to 1, Emission Rate to 100, and Radius to 0.01. To access the Emission and Shape properties, click the boxes to expand them.
 
 ![We made the system face the camera and be offset in front of it](../media/image127.png)
 
->[action]
+> [action]
 >To make the effect look better, check and expand the Size Over Lifetime and Color Over Lifetime panels.
 
 ![Panels in the Particle System Inspector](../media/image82.png)
 
->[action]
+> [action]
 >Click the white box next to Color to open up the Gradient Editor.
 
 The little pointers on the top represent alpha, and the ones on the bottom represent hue. You can click to create new ones, and move or delete existing ones. Click on the top right one and set its alpha to 0.
@@ -32,8 +32,8 @@ The little pointers on the top represent alpha, and the ones on the bottom repre
 
 This will make each particle start tinted white and end clear.
 
->[action]
->Now click on the grey box next to Size. This is the curve that represents the size. You can add or edit key points on the curve. Grab the farthest left one and drag it down to make a pretty curve.
+> [action]
+>Now click on the gray box next to Size. This is the curve that represents the size. You can add or edit key points on the curve. Grab the farthest left one and drag it down to make a pretty curve.
 
 ![Size over lifetime can be represented as a curve](../media/image36.png)
 
@@ -46,7 +46,7 @@ expand into nothingness.
 
 As a final touch to our particles, we’ll make the particles thinner.
 
->[action]
+> [action]
 >In the Render section, change the Render Mode to Stretched Billboard, then set the Length Scale to -10 and the Speed Scale to -0.5.
 
 ![Changing the render mode makes the particles thinner](../media/image31.png)

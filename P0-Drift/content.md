@@ -11,7 +11,7 @@ Some of the things you’ll learn in this tutorial include how to:
 
 -   Set up a VR game to only respond to rotation or translation, rather than both
 -   Add Attributes to components to make them act differently in the Editor
--   Create a cool “whoosh” effect to reduce nausea
+-   Create a cool `whoosh` effect to reduce nausea
 -   Apply Camera effects
 -   Master Time itself!
 

@@ -5,23 +5,23 @@ slug: making-the-menu
 
 Finally let’s add a Menu Scene that we’ll go back to when we win.
 
->[action]
->Create a new Scene in the Scenes folder named “Main” and remove the Skybox.
+> [action]
+>Create a new Scene in the Scenes folder named `Main` and remove the Skybox.
 
 ![The Main Scene in the Project Panel](../media/image105.png)
 
->[action]
+> [action]
 >Drag a SteamVR\_Camera component onto Main Camera. Be sure to position Main Camera at (0,0,0).
 
 ![The camera set up to be a VR camera](../media/image34.png)
 
->[action]
+> [action]
 >Now add a Canvas to the Scene. Scale it to 0.1 in all dimensions, set its Render Mode to World Space, and set its position to (0,0,100).
 
 ![A world space canvas](../media/image99.png)
 
->[action]
->Now add some Text as a child to it and write something like “Squeeze Grip to Begin.”
+> [action]
+>Now add some Text as a child to it and write something like `Squeeze Grip to Begin.`
 
 ![Instructions on the menu](../media/image120.png)
 
@@ -29,16 +29,16 @@ Now you should see some text floating in front of you.
 
 ![The text should float in front of you](../media/image28.png)
 
-To make the effect a little nicer, we made the Camera’s Background color grey.
+To make the effect a little nicer, we made the Camera’s Background color gray.
 
->[action]
+> [action]
 >Now implement functionality to switch to the Play scene when you squeeze the controller.
 
 ![Set up the scene to switch when you squeeze the grip](../media/image72.gif)
 
 Don’t forget to add your Scenes to the Build Settings!
 
->[solution]
+> [solution]
 >
 >We created a component called MenuController, on a MenuController GameObject, with the following implementation:
 >
@@ -78,11 +78,11 @@ public class MenuController : MonoBehaviour {
 
 <!-- -->
 
->[action]Now just add logic to switch back to Main when you beat the level.
+> [action]Now just add logic to switch back to Main when you beat the level.
 
 ![Switch back when you beat the game!](../media/image132.gif)
 
->[solution]
+> [solution]
 >
 >We just replaced our log statement with this:
 >
@@ -93,7 +93,7 @@ return;
 
 Now you have a feature-complete one-level game!
 
->[action]
+> [action]
 >Go ahead and make it more interesting than just a hallway by changing the path and/or adding some obstacles.
 
 ![We added trees to make our game pretty!](../media/image79.gif)

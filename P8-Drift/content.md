@@ -19,7 +19,7 @@ where path is the file path to the scene name, and you can get the path of a fil
 
 The code gave us a bit of trouble to get right the first time, so we definitely recommend peeking at the solution, but if you want to challenge yourself to write it without, feel free!
 
->[solution]
+> [solution]
 >
 ```
 using UnityEditor;
