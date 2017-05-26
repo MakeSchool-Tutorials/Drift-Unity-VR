@@ -1,6 +1,6 @@
 ---
 title: "Coursing Through The Wind"
-slug: whooooooooooooosh
+slug: coursing-through-the-wind
 ---
 
 Our game would look a lot better with some sort of effect to make it
