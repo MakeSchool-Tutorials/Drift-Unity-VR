@@ -7,17 +7,17 @@ You’ve already guessed the answer ;)
 
 Unity gives us an incredible amount of access to write code to do all sorts of things in the Editor, and, as you may have guessed where this is headed, one of these is editing the Build Settings!
 
-You can do this by setting the array of EditorBuildSettingsScenes called EditorBuildSettings.scenes.
+You can do this by setting the array of `EditorBuildSettingsScenes` called `EditorBuildSettings.scenes`.
 
-You can create a new EditorBuildSettingsScene like this:
+You can create a new `EditorBuildSettingsScene` like this:
 
 ```
 EditorBuildSettingsScene scene = new EditorBuildSettingsScene(path,true);
 ```
 
-where path is the file path to the scene name, and you can get the path of a file by calling file.fullName.
+where path is the file path to the scene name, and you can get the path of a file by calling `file.fullName`.
 
-The code gave us a bit of trouble to get right the first time, so we definitely recommend peeking at the solution, but if you want to challenge yourself to write it without, feel free!
+The code gave us a bit of trouble to get right the first time, so we recommend peeking at the solution, but if you want to challenge yourself to write it without, feel free!
 
 > [solution]
 >
@@ -90,10 +90,10 @@ public class OnBuild : object {
 }
 ```
 >
-This solution also currently has a **bug** in which it writes each level exactly twice to the bulid settings! If you can catch what’s causing that, let us know!
+This solution also has a **bug** in which it writes each level exactly twice to the bulid settings! If you can catch what’s causing that, let us know!
 
-Now your level designer can happily create levels without even needing to open the Build Settings menu!
+Now your level designer can create levels without even needing to open the Build Settings menu!
 
-If we were satisfied now, we could just tell our Main Scene to load Level1 instead of Play, and we’d be golden.
+If we were satisfied now, we could just tell our Main Scene to load `Level1` instead of `Play`, and we’d be golden.
 
 However, we want to do even better.
