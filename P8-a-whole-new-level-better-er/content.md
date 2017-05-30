@@ -94,6 +94,6 @@ This solution also has a **bug** in which it writes each level exactly twice to 
 
 Now your level designer can create levels without even needing to open the Build Settings menu!
 
-If we were satisfied now, we could just tell our Main Scene to load `Level1` instead of `Play`, and we’d be golden.
+If we were satisfied now, we could tell our Main Scene to load `Level1` instead of `Play`, and we’d be golden.
 
 However, we want to do even better.
