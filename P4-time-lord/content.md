@@ -9,7 +9,15 @@ To do this, we’ll need a reference to a `SteamVR_TrackedController` in our Sce
 
 > [action]
 >
-Create a new component named `TimeController`, and make it require a `SteamVR_TrackedController` component and set that component’s `index` to `1` when it’s added.
+Create a new component named `TimeController`, and make it require a `SteamVR_TrackedController` component and set that component’s `index` to the right-most controller in `Start` and `Reset`.
+>
+You may find the following sample code useful...
+>
+```
+SteamVR_TrackedController controller = GetComponent<SteamVR_TrackedController>();
+int rightIndex = SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost);
+controller.SetDeviceIndex(rightIndex);
+```
 
 <!-- -->
 
@@ -22,23 +30,33 @@ using UnityEngine;
 using System.Collections;
 >
 [RequireComponent(typeof(SteamVR_TrackedController))]
-public class TimeController : MonoBehaviour {
+public class TimeController : MonoBehaviour
+{
+    private SteamVR_TrackedController controller;
 >
-  // Use this for initialization
-  void Start () {
+    // Use this for initialization
+    void Start()
+    {
+        Initialize();
+    }
 >
-  }
+    void Reset()
+    {
+        Initialize();
+    }
 >
-  void Reset() {
-    SteamVR_TrackedController controller = GetComponent<SteamVR_TrackedController>();
-    controller.SetDeviceIndex(1);
-  }
+    // Update is called once per frame
+    void Update()
+    {
 >
-  // Update is called once per frame
-  void Update () {
+    }
 >
-  }
->
+    void Initialize()
+    {
+        controller = GetComponent<SteamVR_TrackedController>();
+        int rightIndex = SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost);
+        controller.SetDeviceIndex(rightIndex);
+    }
 }
 ```
 
@@ -54,7 +72,7 @@ Now we can write code in our `TimeController` component to read the inputs from 
 
 > [info]
 >
-To double-check that this component is, in fact, reading inputs from the Vive controller, run the Scene and try pressing some of the buttons on the controller. You should see the appropriate check boxes fill in on the component when you do.
+To double-check that this component is, in fact, reading inputs from the Oculus Touch controller, run the Scene and try pressing some of the buttons on the controller. You should see the appropriate check boxes fill in on the component when you do.
 
 A simple way we could freeze time would be to do the following in our update method:
 
@@ -96,31 +114,37 @@ using UnityEngine;
 using System.Collections;
 >
 [RequireComponent(typeof(SteamVR_TrackedController))]
-public class TimeController : MonoBehaviour {
+public class TimeController : MonoBehaviour
+{
+    public float timeScaleRate;
+    private SteamVR_TrackedController controller;
 >
-  public float timeScaleRate;
-  private SteamVR_TrackedController controller;
+    // Use this for initialization
+    void Start()
+    {
+        Initialize();
+    }
 >
-  private void Initialize() {
-    controller = GetComponent<SteamVR_TrackedController>();
-  }
+    void Reset()
+    {
+        Initialize();
+    }
 >
-  // Use this for initialization
-  void Start () {
-    Initialize();
-  }
+    // Update is called once per frame
+    void Update()
+    {
+        float dTimeScale = timeScaleRate * Time.unscaledDeltaTime;
+        if (controller.gripped) { dTimeScale *= -1; }
+        Time.timeScale = Mathf.Clamp01(Time.timeScale + dTimeScale);
+    }
 >
-  void Reset() {
-    Initialize();
-    controller.SetDeviceIndex(1);
-  }
->
-  // Update is called once per frame
-  void Update () {
->
-    float dTimeScale = timeScaleRate * Time.unscaledDeltaTime;
-    if (controller.gripped) { dTimeScale *= -1; }
-    Time.timeScale = Mathf.Clamp01(Time.timeScale + dTimeScale);
-  }
+    void Initialize()
+    {
+        controller = GetComponent<SteamVR_TrackedController>();
+        int rightIndex = SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost);
+        controller.SetDeviceIndex(rightIndex);
+    }
 }
 ```
+>
+Don't forget to set `timeScaleRate` to something you like the feel of!

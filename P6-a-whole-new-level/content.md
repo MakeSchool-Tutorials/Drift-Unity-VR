@@ -38,18 +38,18 @@ Be sure to add your new levels to the Build Settings!
 Go to `Level1`. Our goal is to modify our code so that we go to `Level2` once we beat it, then to `Level3`, then to `Main`.
 
 We could do this by changing the code in Player’s `OnCollisionEnter` method to look like the following:
->
+
 ```
 void OnCollisionEnter(Collision col) {
->
+
   string nextLevelName = SceneManager.GetActiveScene().name;
->
+
   if (col.gameObject.CompareTag("Goal")) {
     if (nextLevelName.Equals("Level1")) { nextLevelName = "Level2"; }
     else if (nextLevelName.Equals("Level2")) { nextLevelName = "Level3"; }
     else if (nextLevelName.Equals("Level3")) { nextLevelName = "Main"; }
   }
->
+
   SceneManager.LoadScene(nextLevelName);
 }
 ```

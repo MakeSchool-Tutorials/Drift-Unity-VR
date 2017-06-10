@@ -66,6 +66,9 @@ void OnCollisionEnter(Collision col) {
 >
 To make our Goal stand out more, we made it use a green emissive material and put a green haloed light on it.
 >
-![We made our goal green to stand out](../media/image91.png)
+![We made our goal green to stand out](../media/image91a.png)
+>
+
+![We made our goal green to stand out](../media/image91b.png)
 >
 We also increased our Player’s `movementSpeed` to `20`, since it felt like we were moving a little too slowly.

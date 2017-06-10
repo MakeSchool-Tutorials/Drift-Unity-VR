@@ -15,11 +15,11 @@ Drag a `SteamVR_Camera` component onto Main Camera. Be sure to position Main Cam
 >
 ![The camera set up to be a VR camera](../media/image34.png)
 >
-Now add a Canvas to the Scene. `Scale` it to `0.1` in all dimensions, set its `Render Mode` to `World Space`, and set its `position` to `(0,0,100)`.
+Now add a Canvas to the Scene. Set its `Render Mode` to `World Space`, `Scale` it to `0.1` in all dimensions, and set its `position` to `(0,0,100)`.
 >
 ![A world space canvas](../media/image99.png)
 >
-Now add some Text as a child to it and write something like `Squeeze Grip to Begin.`
+Now add some Text as a child to it and write something like `Squeeze Grip to Begin.` Format it as you see fit.
 >
 ![Instructions on the menu](../media/image120.png)
 
@@ -27,7 +27,7 @@ Now you should see some text floating in front of you.
 
 ![The text should float in front of you](../media/image28.png)
 
-To make the effect a little nicer, we made the Camera’s Background color gray.
+To make the effect a little nicer, we made the Camera’s Background color gray and the text white.
 
 # Starting the game
 
@@ -37,7 +37,7 @@ Now implement functionality to switch to the Play scene when you squeeze the con
 >
 ![Set up the scene to switch when you squeeze the grip](../media/image72.gif)
 >
-Don’t forget to add your Scenes to the Build Settings!
+Don’t forget to add your Scenes to the Build Settings! (Drag it to `File > Build Settings`)
 
 <!--  -->
 
@@ -51,31 +51,36 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 >
 [RequireComponent(typeof(SteamVR_TrackedController))]
-public class MenuController : MonoBehaviour {
+public class MenuController : MonoBehaviour
+{
+    private SteamVR_TrackedController controller;
 >
-  SteamVR_TrackedController controller;
->
-  private void Initialize() {
-    controller = GetComponent<SteamVR_TrackedController>();
-  }
->
-  // Use this for initialization
-  void Start () {
-    Initialize();
-  }
->
-  void Reset() {
-    Initialize();
-    controller.SetDeviceIndex(1);
-  }
->
-  // Update is called once per frame
-  void Update () {
-    if (controller.gripped) {
-      SceneManager.LoadScene("Play");
+    // Use this for initialization
+    void Start()
+    {
+        Initialize();
     }
-  }
 >
+    void Reset()
+    {
+        Initialize();
+    }
+>
+    // Update is called once per frame
+    void Update()
+    {
+        if (controller.gripped)
+        {
+            SceneManager.LoadScene("Play");
+        }
+    }
+>
+    void Initialize()
+    {
+        controller = GetComponent<SteamVR_TrackedController>();
+        int rightIndex = SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost);
+        controller.SetDeviceIndex(rightIndex);
+    }
 }
 ```
 
@@ -85,9 +90,11 @@ public class MenuController : MonoBehaviour {
 
 > [challenge]
 >
-Now just add logic to switch back to Main when you beat the level.
+Now add logic to switch back to Main when you beat the level.
 >
 ![Switch back when you beat the game!](../media/image132.gif)
+
+<!--  -->
 
 > [solution]
 >
@@ -108,7 +115,7 @@ Go ahead and make it more interesting than a hallway by changing the path and/or
 
 We downloaded a package off the Asset Store with low poly trees and put them all over with the Default-Diffuse material! We also imported the Standard Assets Effects package and applied some Bloom to the Main Camera (eye), because Bloom looks oh so pretty. We also thought our lights would look prettier a little brighter and played around with our Particle System to make it more subtle (it’s now a cone and has overall lower opacity) ;)
 
-As a final touch, we added the title, Draft to the Main Menu, as some pulsing Text.
+As a final touch, we added the title, Draft, to the Main Menu, as some pulsing Text.
 
 ![Our menu is so pretty :3](../media/image97.gif)
 

@@ -164,6 +164,12 @@ If you’d like additional challenges, try any of the following:
 
 > [challenge]
 >
+Make the game work two either grip button. Right now it tries to use the right-most controller (relative to the headset).
+
+<!--  -->
+
+> [challenge]
+>
 Implement a gauge for slow-down, so that the player can’t spam it
 
 <!--  -->

@@ -40,7 +40,7 @@ To be sure everything’s working as usual, run the Scene and you should be able
 >
 ![Run the scene to test it](../media/image84.gif)
 
-For our game, we want the Player to be able to look around, but not be able to walk around.
+<!-- For our game, we want the Player to be able to look around, but not be able to walk around.
 
 If you place a Cube in the center of the room, the movement becomes even easier to see than with the Skybox alone.
 
@@ -52,9 +52,11 @@ We’re going to see if we can’t get rid of the translation (movement of the p
 
 To do this, we’ll want to look a little more carefully at our components to find the one that makes the head move. A little digging uncovers that the `SteamVR_TrackedObject` component handles translational tracking on Main Camera (head).
 
+> [action]
+>`
+Click the `Gear Icon > Edit Script` to view `SteamVR_TrackedObject`.
+>
 ![The SteamVR_TrackedObject component](../media/image90.png)
-
-![The code in the SteamVR_TrackedObject component](../media/image29.png)
 
 Unfortunately, this component doesn’t provide a way for us to turn off or on motion tracking by default... Fortunately, the code is open source!
 
@@ -72,10 +74,16 @@ We did this by adding the following public member variable to the component:
 public bool doesNotApplyTranslation;
 ```
 >
-Then we modified modify both parts of the code that set translation (originally lines 65 and 70) to the following:
+Then we modified modify both parts of the code that set translation. Change line `61` to:
 >
 ```
-if (!doesNotApplyTranslation) {transform.localPosition = pose.pos;}
+if (!doesNotApplyTranslation) { transform.position = origin.transform.TransformPoint(pose.pos); }
+```
+>
+And change line `66` to:
+>
+```
+if (!doesNotApplyTranslation) { transform.localPosition = pose.pos; }
 ```
 >
 Then we checked the new box that appeared for this field in the Editor.
@@ -93,12 +101,12 @@ Now run the Scene and try translating around in the space. Viola! No more transl
 > [info]
 >
 The Unity Editor’s game view may still show you translating, so the best way to see this is by watching the position of Main Camera (head) with the new checkbox checked vs unchecked.
-?
-![Rotation, but no translation](../media/image106.gif)
+>
+![Rotation, but no translation](../media/image106.gif) -->
 
 # Player movement
 
-Now that we have the head rotation-only tracked, it’s time to make the Player move.
+It’s time to make the Player move.
 
 > [action]
 >
@@ -172,8 +180,9 @@ With that knowledge, try making the player move forward with a constant velocity
 We’ve made our Player component look like this:
 >
 ```
-using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 >
 [RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour {
@@ -261,6 +270,6 @@ You may have noticed, by the way, that the lighting changes when the level reloa
 
 > [action]
 >
-Rather than building lighting, set the Skybox in the Lighting Window to `None`.
+Rather than building lighting, set the Skybox in the Lighting Window (`Window > Lighting > Settings`) to `None`.
 >
 ![You can fix the lighting in the Lighting Window](../media/image26.png)
