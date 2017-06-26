@@ -53,7 +53,7 @@ We’re going to see if we can’t get rid of the translation (movement of the p
 To do this, we’ll want to look a little more carefully at our components to find the one that makes the head move. A little digging uncovers that the `SteamVR_TrackedObject` component handles translational tracking on Main Camera (head).
 
 > [action]
->`
+>
 Click the `Gear Icon > Edit Script` to view `SteamVR_TrackedObject`.
 >
 ![The SteamVR_TrackedObject component](../media/image90.png)
