@@ -40,69 +40,9 @@ To be sure everything’s working as usual, run the Scene and you should be able
 >
 ![Run the scene to test it](../media/image84.gif)
 
-<!-- For our game, we want the Player to be able to look around, but not be able to walk around.
-
 If you place a Cube in the center of the room, the movement becomes even easier to see than with the Skybox alone.
 
 ![Look at the effect on a cube](../media/image47.gif)
-
-# Disabling translation
-
-We’re going to see if we can’t get rid of the translation (movement of the player's head).
-
-To do this, we’ll want to look a little more carefully at our components to find the one that makes the head move. A little digging uncovers that the `SteamVR_TrackedObject` component handles translational tracking on Main Camera (head).
-
-> [action]
->
-Click the `Gear Icon > Edit Script` to view `SteamVR_TrackedObject`.
->
-![The SteamVR_TrackedObject component](../media/image90.png)
-
-Unfortunately, this component doesn’t provide a way for us to turn off or on motion tracking by default... Fortunately, the code is open source!
-
-> [challenge]
->
-Can you think of a way to modify the `SteamVR_TrackedObject` component in the least destructive way so that our head no longer tracks translation?
-
-<!-- -->
-
-> [solution]
->
-We did this by adding the following public member variable to the component:
->
-```
-public bool doesNotApplyTranslation;
-```
->
-Then we modified modify both parts of the code that set translation. Change line `61` to:
->
-```
-if (!doesNotApplyTranslation) { transform.position = origin.transform.TransformPoint(pose.pos); }
-```
->
-And change line `66` to:
->
-```
-if (!doesNotApplyTranslation) { transform.localPosition = pose.pos; }
-```
->
-Then we checked the new box that appeared for this field in the Editor.
->
-![](../media/image04.png)
-
-<!-- -->
-
-> [action]
->
-Now run the Scene and try translating around in the space. Viola! No more translation!
-
-<!-- -->
-
-> [info]
->
-The Unity Editor’s game view may still show you translating, so the best way to see this is by watching the position of Main Camera (head) with the new checkbox checked vs unchecked.
->
-![Rotation, but no translation](../media/image106.gif) -->
 
 # Player movement
 
